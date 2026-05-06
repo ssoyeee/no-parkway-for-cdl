@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "ParkwaySafe",
+    "slug": "parkwaysafe-prototype",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow ParkwaySafe to use your location to center the map and guide legal routes."
+        }
+      ]
+    ],
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#f3efe4"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "web": {
+      "bundler": "metro"
+    },
+    "android": {
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.anonymous.parkwaysafeprototype"
+    },
+    "ios": {
+      "bundleIdentifier": "com.anonymous.parkwaysafeprototype"
+    }
+  }
+}

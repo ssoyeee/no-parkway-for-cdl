@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkwaySafe Wireframes</title>
+  <style>
+    :root {
+      --bg: #f3f0e8;
+      --ink: #1f2521;
+      --muted: #667067;
+      --line: #313a34;
+      --panel: #fffdf8;
+      --accent: #c9d7c4;
+      --warning: #f1dbc2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #e8ece1 0%, #f6f2e7 100%);
+      color: var(--ink);
+    }
+
+    .page {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+    }
+
+    .intro {
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .screen-block {
+      display: grid;
+      gap: 12px;
+    }
+
+    .screen-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .screen-title h2 {
+      font-size: 18px;
+    }
+
+    .screen-title span {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .phone {
+      width: 100%;
+      max-width: 320px;
+      min-height: 640px;
+      border: 2px solid var(--line);
+      border-radius: 26px;
+      background: var(--panel);
+      padding: 16px;
+      box-shadow: 0 18px 40px rgba(31, 37, 33, 0.08);
+      display: grid;
+      gap: 14px;
+      position: relative;
+    }
+
+    .status {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .notch {
+      width: 96px;
+      height: 10px;
+      background: var(--line);
+      border-radius: 999px;
+      margin: 0 auto 2px;
+    }
+
+    .pill-row,
+    .button-row,
+    .mini-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill,
+    .button,
+    .list-item,
+    .sheet,
+    .banner,
+    .map,
+    .route-card,
+    .nav-card,
+    .setting,
+    .search {
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .pill {
+      padding: 7px 10px;
+      font-size: 12px;
+      background: var(--accent);
+    }
+
+    .search {
+      padding: 14px 14px;
+      font-size: 15px;
+    }
+
+    .button {
+      padding: 14px 16px;
+      text-align: center;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .section-label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .list-item,
+    .route-card,
+    .setting,
+    .nav-card,
+    .sheet {
+      padding: 12px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .list-item strong,
+    .route-card strong,
+    .nav-card strong,
+    .setting strong,
+    .sheet strong {
+      font-size: 14px;
+    }
+
+    .subtext {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .map {
+      min-height: 220px;
+      background:
+        linear-gradient(135deg, rgba(49, 58, 52, 0.08), rgba(49, 58, 52, 0.03)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 28px,
+          rgba(49, 58, 52, 0.08) 28px,
+          rgba(49, 58, 52, 0.08) 30px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 28px,
+          rgba(49, 58, 52, 0.08) 28px,
+          rgba(49, 58, 52, 0.08) 30px
+        );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map::before,
+    .map::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+    }
+
+    .map::before {
+      width: 220px;
+      height: 220px;
+      border: 10px solid rgba(58, 109, 79, 0.28);
+      top: 8px;
+      left: 44px;
+      transform: rotate(18deg);
+    }
+
+    .map::after {
+      width: 180px;
+      height: 180px;
+      border: 10px dashed rgba(181, 83, 47, 0.45);
+      top: 44px;
+      left: -12px;
+      transform: rotate(-12deg);
+    }
+
+    .map-label {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 8px 10px;
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      font-size: 12px;
+      background: rgba(255, 253, 248, 0.94);
+    }
+
+    .banner {
+      padding: 10px 12px;
+      background: var(--warning);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .route-card.primary {
+      background: #eef5ed;
+    }
+
+    .nav-map {
+      min-height: 286px;
+    }
+
+    .footer-nav {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 11px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .footer-nav div {
+      border-top: 2px solid var(--line);
+      padding-top: 8px;
+    }
+
+    .notes {
+      border: 2px dashed var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255, 253, 248, 0.75);
+    }
+
+    .notes h3 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .notes ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="intro">
+      <h1>ParkwaySafe Wireframes</h1>
+      <p>Low-fidelity mobile wireframes for a commercial-van route app that avoids parkways in the NYC tri-state area. The flow keeps the product narrow: search, trust the safe route, get warned early, and keep moving.</p>
+    </section>
+
+    <section class="screens">
+      <article class="screen-block">
+        <div class="screen-title">
+          <h2>1. Home / Route</h2>
+          <span>Start Fast</span>
+        </div>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G 100%</span></div>
+          <div class="pill-row">
+            <div class="pill">Commercial Van</div>
+            <div class="pill">Parkway Avoidance On</div>
+          </div>
+          <div class="search">Where are you going?</div>
+          <div class="list-item">
+            <strong>Current Location</strong>
+            <div class="subtext">Use live position as starting point</div>
+          </div>
+          <div class="section-label">Recent Stops</div>
+          <div class="list-item">
+            <strong>North Shore Hospital</strong>
+            <div class="subtext">Manhasset, NY</div>
+          </div>
+          <div class="list-item">
+            <strong>Lexington Office Tower</strong>
+            <div class="subtext">Midtown East, Manhattan</div>
+          </div>
+          <div class="section-label">Saved Places</div>
+          <div class="mini-row">
+            <div class="pill">Home Base</div>
+            <div class="pill">Warehouse</div>
+            <div class="pill">Supply House</div>
+          </div>
+          <div class="button">Find Safe Route</div>
+          <div class="footer-nav">
+            <div>Route</div>
+            <div>Alerts</div>
+            <div>Settings</div>
+          </div>
+        </div>
+        <div class="notes">
+          <h3>Wireframe Notes</h3>
+          <ul>
+            <li>Vehicle mode is visible at all times so the user never wonders what logic is active.</li>
+            <li>Recents and saved places shorten the workday flow for repeat service calls.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="screen-block">
+        <div class="screen-title">
+          <h2>2. Route Options</h2>
+          <span>Build Trust</span>
+        </div>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="status"><span>9:43</span><span>5G 98%</span></div>
+          <div class="banner">Safe route found. Parkways and known restricted roads excluded.</div>
+          <div class="map">
+            <div class="map-label">Primary route avoids parkways</div>
+          </div>
+          <div class="route-card primary">
+            <strong>Primary Route</strong>
+            <div class="subtext">57 min • 31 mi • Tolls $6.94</div>
+            <div class="subtext">Why this route: safest legal option with moderate traffic</div>
+          </div>
+          <div class="route-card">
+            <strong>Alternate Route</strong>
+            <div class="subtext">61 min • 33 mi</div>
+            <div class="subtext">Why this route: fewer merges through Bronx approach</div>
+          </div>
+          <div class="button-row">
+            <div class="button">Start Navigation</div>
+            <div class="button secondary">See Alerts</div>
+          </div>
+          <div class="footer-nav">
+            <div>Route</div>
+            <div>Alerts</div>
+            <div>Settings</div>
+          </div>
+        </div>
+        <div class="notes">
+          <h3>Wireframe Notes</h3>
+          <ul>
+            <li>The route card explains why the app chose the path, which builds confidence.</li>
+            <li>The map should eventually show restricted roads as a different visual layer.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="screen-block">
+        <div class="screen-title">
+          <h2>3. Active Navigation</h2>
+          <span>Reduce Stress</span>
+        </div>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="status"><span>9:51</span><span>5G 96%</span></div>
+          <div class="nav-card">
+            <strong>Next Turn</strong>
+            <div class="subtext">In 0.6 mi, keep right to I-495 Service Rd</div>
+          </div>
+          <div class="banner">Restriction ahead in 1.1 mi: Northern State Parkway entrance. Continue on service road.</div>
+          <div class="map nav-map">
+            <div class="map-label">Navigation view with early warning</div>
+          </div>
+          <div class="button-row">
+            <div class="button secondary">Mute</div>
+            <div class="button secondary">Overview</div>
+            <div class="button secondary">End Trip</div>
+          </div>
+          <div class="sheet">
+            <strong>Re-route Behavior</strong>
+            <div class="subtext">If driver goes off route, app recalculates while keeping parkway restrictions active.</div>
+          </div>
+          <div class="footer-nav">
+            <div>Trip</div>
+            <div>Alerts</div>
+            <div>More</div>
+          </div>
+        </div>
+        <div class="notes">
+          <h3>Wireframe Notes</h3>
+          <ul>
+            <li>The next action is intentionally large and simple for in-vehicle use.</li>
+            <li>Warnings need to arrive early enough to prevent forced merges or sudden lane changes.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="screen-block">
+        <div class="screen-title">
+          <h2>4. Settings / Vehicle</h2>
+          <span>Keep It Light</span>
+        </div>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="status"><span>9:56</span><span>5G 95%</span></div>
+          <div class="setting">
+            <strong>Vehicle Type</strong>
+            <div class="subtext">Commercial Van</div>
+          </div>
+          <div class="setting">
+            <strong>Height</strong>
+            <div class="subtext">Optional input for future low-clearance alerts</div>
+          </div>
+          <div class="setting">
+            <strong>Weight</strong>
+            <div class="subtext">Optional input for future restricted-road checks</div>
+          </div>
+          <div class="setting">
+            <strong>Avoid Parkways</strong>
+            <div class="subtext">Always on for commercial-van mode</div>
+          </div>
+          <div class="setting">
+            <strong>Avoid Tolls</strong>
+            <div class="subtext">User preference toggle</div>
+          </div>
+          <div class="setting">
+            <strong>Alert Sound</strong>
+            <div class="subtext">On</div>
+          </div>
+          <div class="setting">
+            <strong>Voice Guidance</strong>
+            <div class="subtext">On</div>
+          </div>
+          <div class="button">Save Settings</div>
+          <div class="footer-nav">
+            <div>Route</div>
+            <div>Alerts</div>
+            <div>Settings</div>
+          </div>
+        </div>
+        <div class="notes">
+          <h3>Wireframe Notes</h3>
+          <ul>
+            <li>The setup stays intentionally small so it feels like a service-driver tool, not fleet software.</li>
+            <li>Vehicle details are optional now, but the screen leaves room for smarter rules later.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
